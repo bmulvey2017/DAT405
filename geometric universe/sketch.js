@@ -2,11 +2,12 @@
 function setup() {
 
   createCanvas(500,500);
-
-  frameRate(0.5)
+//makes shapes re randomise every 1 second
+  frameRate(5000);
 }
 function draw() {
-
+//depending on what position you put the letter that you have chosen to be random, will randomise between the number you have given e.g 500
+//so putting r in position (_, r, _, _) then the y axis will be variable and rndom between 500
 for (var i = 0; i < 900; i++) {
   var r = random(500);
   var s = random(550);
