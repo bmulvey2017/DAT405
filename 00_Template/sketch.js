@@ -17,7 +17,7 @@ function setup() {
 //Rendering function
 function draw() {
   //Set a background color
-  background(255, 0, 255);
+  background(255, 0, 0);
 
   //Print a message to the console - to view using Chrome:
   //View > Developer > Developer Tools > Console
