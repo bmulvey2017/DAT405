@@ -1,48 +1,50 @@
-var backgroundColor;
-var isOverRectangle;
 
-function setup()
-{
-  // set canvas size
-  createCanvas(400, 400);
-
-  // default background color
-  backgroundColor = color(255, 255, 255);
+//Initialization function
+function setup() {
+  createCanvas(500,500);
 }
 
-function draw()
-{
-  background(backgroundColor);
+//Rendering function
+function draw() {
+  //Set a background color
+  background(255, 0, 0);
 
-  // check if mouse is inside the rectangle
-  // mouseX >= x && mouseX <= x+width && mouseY >= y && mouseY <= y+height
-  if (mouseX >= 150 && mouseX <= 150+100 && mouseY >= 150 && mouseY <= 150+100)
-  {
-    isOverRectangle = true;
-  } else {
-    isOverRectangle = false;
-  }
+//top left
+fill (225,0,225)
+  rect (0, 0, 250, 250)
 
-  // draw a rectangle
-  rectMode(CORNER);
-  stroke(0);
-  strokeWeight(5);
-  if(isOverRectangle == true)
-  {
-    fill(100);
-    cursor(HAND);
-  } else {
-	fill(200);
-	cursor(ARROW);
-  }
-  rect(150, 150, 100, 100);
+  //top right
+  rect (250, 0, 250, 250)
 
-}
+//bottom left
+rect (0, 250, 250, 250)
 
-function mousePressed()
-{
-  if(isOverRectangle == true)
-  {
-    backgroundColor = color(random(255), random(255), random(255));
-  }
+//bottom right
+rect (250, 250, 250, 250)
+
+//top left changes colour (if mouseX is greater or equal to 0 (&&=and) smaller or equal to 250.....)
+if (mouseX >= 0 && mouseX <= 250 && mouseY >= 0 && mouseY <= 250){
+    fill(255,0,0)
+    rect(0,0,250,250)}
+
+//top right changes colour
+if (mouseX >= 250 && mouseX <= 500 && mouseY >= 0 && mouseY <=250) {
+  fill (0, 250, 0)
+  rect (250, 0, 250, 250)}
+
+  //bottom left changes colour
+  if (mouseX >= 0 && mouseX <= 250 && mouseY >= 250 && mouseY <= 500)
+  { fill (0, 0, 255)
+    rect (0, 250, 250, 250)}
+
+    //bottom right changes colour
+    if (mouseX >= 250 && mouseX <= 500 && mouseY >= 250 && mouseY <= 500)
+    {fill (100, 0, 100)
+     rect (250, 250, 250, 250)}
+
+//centre changes overall colour
+if (mouseX == 250 && mouseY == 250){
+  fill (200)
+  opacity: .50;
+  rect (0, 0, 500, 500)}
 }
