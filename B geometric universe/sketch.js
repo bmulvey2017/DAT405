@@ -17,7 +17,7 @@ function draw() {
 for (var i = 0; i < 10; i++) {
 
   stroke(1);
-  fill(random(255),random(255),random(255))
+  fill(random(255),random(0),random(150))
 
   ellipse(random(500), random(550), random(50), random (50));
   rect(random(500), random(550), random(50), random (50));
