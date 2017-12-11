@@ -1,11 +1,8 @@
-window.onload = function() {csssort();};
-var w = window.innerWidth;
-
 //Setup of variables
 let r = 0;
 let g = 0;
 let b = 0;
-let speed = 5;
+let speed = 50;
 let diameter = 50;
 let x1;
 let y1;
@@ -22,21 +19,21 @@ var valueColor = false;
 //Name the following code to make it link to my index file.
   canvas.parent("myContainer");
 
-//On setup ellipse appears in the middle of the screen
+//On setup ellipse appears in the middle of the screen.
   x1 = width/2;
   y1 = height/2;
   x2 = width/2;
   y2 = width/2;
 
-//
-  {let x1 = map(height, 0, width, 0, 297);
-    let y1 = map(width, 0, height, 420.5, 0);}
+//Re maps the value of x1 and y1. New values will be constrained within 0 and half the width and height.
+  {let x1 = map(height, 0, width, 0, width/2);
+    let y1 = map(width, 0, height, height/2, 0);}
 
 //Origonal backround colour when the webpage is refreshed.
     background(00);
   }
 
-//Press the enter key to change the values of r, g, b.
+//Press the enter key to change the values of r, g, b based on the valueColor variable.
   function keyPressed() {
     if (keyCode === ENTER && valueColor == false) {
       valueColor = true;
@@ -46,7 +43,8 @@ var valueColor = false;
     }
   }
 
-//Let computer know if the mouse is being clicked or not.
+//Let computer know if the mouse is being clicked or not using value as boolean.
+//Console log used for debugging.
   function mouseClicked(){
     if (value == false){
       value = true;
@@ -72,18 +70,18 @@ var valueColor = false;
 //stay within the boundaries of the sketch canvas.
     x1 += random(-speed, speed);
     y1 += random(-speed, speed);
-    x1 = constrain(x1, 0, width);
+    x1 = constrain(x1, 0, width-100);
     y1 = constrain(y1, 0, height);
-    x2 = constrain(x2, 0, width);
+    x2 = constrain(x2, 0, width-100);
     y2 = constrain(y2, 0, height);
 
-//
+//Mirrors the position of x1 and assigns value to x2.
     x2=500-x1;
     y2=500-y1;
 
 
 //To make value true, enter key must be pressed.
-//If value is true, then the colour of the shape will randomised
+//If value is true, then the colour of the shape will randomise
 //until value is false, which requires for the enter key to be pressed again.
     if (valueColor == true) {
       r = random(255);
@@ -92,9 +90,9 @@ var valueColor = false;
     }
 
 //Set up of second set of variables.
-//MouseY2 is the scale
+//MouseY2 is the scale.
     var mouseY2;
-//Middle2 and middle are used to centralize the shapes on the screen
+//Middle2 and middle are used to centralize the shapes on the screen.
     var middle2 = 50;
     var middle = 150;
 
@@ -113,6 +111,7 @@ var valueColor = false;
 //If value is false, which is not mouse not clicked, then create ellipses.
 //This is automatically why the webpage opens on ellipses not rectangles.
 //Because the mouse has not yet been clicked to change to rectangles.
+//Translate used to handle difference of origin points for rect.
     if (value == false) {
 
       fill (r, g, b);
@@ -133,6 +132,7 @@ var valueColor = false;
       pop()
     }
 //If value is true, which is not mouse clicked, then create rectangles.
+//Translate used to handle difference of origin points for rect.
     else if (value == true) {
       fill(r, g, b);
       translate(-25, -25);
@@ -152,8 +152,4 @@ var valueColor = false;
       rect(x2+middle, y2-middle2, diameter, diameter);
       pop();
     }
-  }
-
-  function csssort() {
-    document.getElementById('myContainer').style.marginLeft = w/2-297 + "px";
   }

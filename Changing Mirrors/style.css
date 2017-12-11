@@ -1,11 +1,18 @@
+/*/Body resets browser padding and margin defaults and controls background colour of webpage/*/
 body {
+  padding: 0;
+  margin: 0;
   background-color: #000;
 }
 
+/*/My container links my canvas in sketch to the html page and margin positions
+used to centre the canvas on screen./*/
 #myContainer {
-  margin-left: 100px;
+  width: 594px;
+  margin: 0px auto;
 }
 
+/*/Syles that effect the alignment, colour and font of text. /*/
 #title {
   text-align: center;
   color:#fff;
