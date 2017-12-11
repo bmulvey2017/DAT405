@@ -1,0 +1,13 @@
+body {
+  background-color: #000;
+}
+
+#myContainer {
+  margin-left: 100px;
+}
+
+#title {
+  text-align: center;
+  color:#fff;
+  font-family: monospace;
+}

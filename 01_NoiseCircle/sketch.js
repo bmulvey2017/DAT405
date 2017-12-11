@@ -8,12 +8,20 @@
 let r = 200;
 let g = 200;
 let b = 100;
-let speed = 5;
 let diameter = 50;
+
 let x1;
 let y1;
 let x2;
 let y2;
+let speed = 5;
+
+let x1Two;
+let y1Two;
+let x2Two;
+let y2Two;
+let speed2 = 5;
+
 var hasPressed;
 var value = false;
 var valueColor = false;
@@ -21,16 +29,14 @@ var valueColor = false;
 function setup() {
   createCanvas(500, 500);
   //On setup ellipse appears in the middle of the screen
+
   x1 = width/2;
   y1 = height/2;
 
-  x2 = width/2;
-  y2 = width/2;
+  x1Two = width/2;
+  y1Two = height/2;
 
-  {let x1 = map(height, 0, width, 0, 250);
-  let y1 = map(width, 0, height, 250, 0);}
-
-  noStroke();
+//noStroke();
 
   let circleArray = [];
   let arraySize = 1000;
@@ -39,7 +45,7 @@ function setup() {
     circleArray[i] = new Circle(x1, y1, random(-5, 5), random(-5, 5), random(10, 100));
   }
 
-  background(200);
+  background(120);
   //frameRate(1);
 }
 //! let computer know if the mouse is being clicked or not
@@ -50,7 +56,7 @@ function setup() {
 
 function mousePressed() {
   if (value == false) {
-        value = true;
+    value = true;
   }
   else {
     value = false;
@@ -68,6 +74,8 @@ function keyPressed() {
 
 
 function draw() {
+  //background(200);
+
   //In the following four lines of the code, we add to x1 and y1
   //a random amoung between -3 to 3 for each frame. This makes the
   //position of the shape to jiggle randomly. In addition to this,
@@ -77,54 +85,35 @@ function draw() {
   y1 += random(-speed, speed);
   x1 = constrain(x1, 0, width);
   y1 = constrain(y1, 0, height);
+  x2=500-x1;
+  y2=500-y1;
+  if (valueColor == true) {
+    r = random(255);
+    g = random(255);
+    b = random(255);
+  }
+  fill(r, g, b, 120);
+  ellipse(x1, y1, diameter, diameter);
+  ellipse(x2, y1, diameter, diameter);
+  ellipse(x1, y2, diameter, diameter);
+  ellipse(x2, y2, diameter, diameter);
 
-x2=500-x1;
-y2=500-y1;
-
-if (valueColor == true) {
-  r = random(255);
-  g = random(255);
-  b = random(255);
-}
-
-fill(r, g, b, 120);
-
- if (value == false) {
-//if (hasPressed) {
-ellipse(x1, y1, diameter, diameter);
-ellipse(x2, y1, diameter, diameter);
-ellipse(x1, y2, diameter, diameter);
-ellipse(x2, y2, diameter, diameter);
-
-ellipse(x1/2, y1/2, diameter, diameter);
-ellipse(x2/2, y1/2, diameter, diameter);
-ellipse(x1/2, y2/2, diameter, diameter);
-ellipse(x2/2, y2/2, diameter, diameter);
-
-ellipse(x1*2, y1*2, diameter, diameter);
-ellipse(x2*2, y1*2, diameter, diameter);
-ellipse(x1*2, y2*2, diameter, diameter);
-ellipse(x2*2, y2*2, diameter, diameter);
-//}
-}
-else {
-translate(-25, -25);
-rect(x1, y1, diameter, diameter);
-rect(x2, y1, diameter, diameter);
-rect(x1, y2, diameter, diameter);
-rect(x2, y2, diameter, diameter);
-translate(-25, -25);
-rect(x1/2, y1/2, diameter, diameter);
-rect(x2/2, y1/2, diameter, diameter);
-rect(x1/2, y2/2, diameter, diameter);
-rect(x2/2, y2/2, diameter, diameter);
-translate(-25, -25);
-rect(x1*2, y1*2, diameter, diameter);
-rect(x2*2, y1*2, diameter, diameter);
-rect(x1*2, y2*2, diameter, diameter);
-rect(x2*2, y2*2, diameter, diameter);
-}
-
+  x1Two += random(-speed2, speed2);
+  y1Two += random(-speed2, speed2);
+  x1Two = constrain(x1Two, 0, width);
+  y1Two = constrain(y1Two, 0, height);
+  x2Two=500-x1Two;
+  y2Two=500-y1Two;
+  if (valueColor == true) {
+    r = random(255);
+    g = random(255);
+    b = random(255);
+  }
+  fill(255,0, 0, 120);
+  ellipse(x1Two, y1Two, diameter, diameter);
+  ellipse(x2Two, y1Two, diameter, diameter);
+  ellipse(x1Two, y2Two, diameter, diameter);
+  ellipse(x2Two, y2Two, diameter, diameter);
 }
 
 class Circle{
@@ -155,7 +144,7 @@ class Circle{
     }
   }
 }
-  //reverse(-speed, speed);
+//reverse(-speed, speed);
 
-  //Press the mouse to change the values of r, g, b
-  //which following in the fill() they control the color of the shape
+//Press the mouse to change the values of r, g, b
+//which following in the fill() they control the color of the shape
